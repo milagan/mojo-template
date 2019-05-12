@@ -1,0 +1,60 @@
+swagger: '2.0'
+info:
+  version: '0.1'
+  title: MojoTemplate Example
+schemes: [ http ]
+basePath: "/api"
+paths:
+  /data:
+    get:
+      operationId: getData
+      x-mojo-to: "data#get"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: successful get data response
+          schema:
+            type: object
+        500:
+          description: exception
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/ErrorMessage'
+    post:
+      operationId: postData
+      x-mojo-to: "data#post"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      responses:
+        200:
+          description: successful post data response
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Data'
+        500:
+          description: exception
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/ErrorMessage'
+definitions:
+  ErrorMessage:
+    type: object
+    properties:
+      Data:
+        type: string
+  Data:
+    type: object
+    properties:
+      Data:
+        type: string

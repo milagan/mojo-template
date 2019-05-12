@@ -12,6 +12,9 @@ sub startup {
   # Configure the application
   $self->secrets($config->{secrets});
 
+  # OpenAPI support
+  $self->plugin(OpenAPI => {spec => $self->static->file("api.yaml")->path});
+
   # Helpers
   $self->helper(log => sub { return $log; });
 
@@ -23,10 +26,11 @@ sub startup {
   $r->get('/welcome')->to('example#welcome');
   $r->get('/hello')->to('example#hello');
 
-  $r->get('/api/data')->to('api#get_data');
-  $r->post('/api/data')->to('api#post_data');
-  $r->put('/api/data')->to('api#put_data');
-  $r->delete('/api/data/:id')->to('api#delete_data');
+  $r->get('/api')->to('api#index');
+  # $r->get('/api/data')->to('data#get');
+  # $r->post('/api/data')->to('data#post');
+  $r->put('/api/data')->to('data#put');
+  $r->delete('/api/data/:id')->to('data#delete');
 }
 
 1;
