@@ -14,8 +14,13 @@ $ make manifest
 $ make dist
 ```
 
-## Test and Code Coverate
+## Test and Code Coverage
 ```
 $ prove -v
 $ cover -test
+```
+
+## Install Dependencies
+```
+$ cpanm --installdeps .
 ```
