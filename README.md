@@ -1,1 +1,21 @@
 # mojo_template
+
+## Create Project
+```
+$ mojo generate app
+```
+
+## Build, Test, and Distribute
+```
+$ perl Makefile.PL
+$ make
+$ make test
+$ make manifest
+$ make dist
+```
+
+## Test and Code Coverate
+```
+$ prove -v
+$ cover -test
+```
