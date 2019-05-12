@@ -18,6 +18,8 @@ sub startup {
   $r->get('/')->to('example#welcome');
   $r->get('/welcome')->to('example#welcome');
   $r->get('/hello')->to('example#hello');
+
+  $r->get('/api/data')->to('api#data');
 }
 
 1;
