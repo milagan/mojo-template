@@ -24,3 +24,8 @@ $ cover -test
 ```
 $ cpanm --installdeps .
 ```
+
+## Scan for Dependencies
+```
+$ scandeps.pl script/mojo_template
+```
