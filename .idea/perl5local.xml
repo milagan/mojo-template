@@ -115,7 +115,7 @@
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/DBI/DBI.so" value="1552347461000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Data/UUID/UUID.so" value="1552351454000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/DateTime/DateTime.so" value="1552348450000" />
-        <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Devel/Cover/Cover.so" value="1552361868000" />
+        <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Devel/Cover/Cover.so" value="1558906518000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Devel/NYTProf/NYTProf.so" value="1556107553000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Digest/CRC/CRC.so" value="1552347925000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Guard/Guard.so" value="1557182540000" />
@@ -127,6 +127,7 @@
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/Net/SSLeay/SSLeay.so" value="1552350074000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/NetAddr/IP/Util/Util.so" value="1552347900000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/PadWalker/PadWalker.so" value="1552361118000" />
+        <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/YAML/XS/LibYAML/LibYAML.so" value="1558906594000" />
         <entry key="/usr/local/lib/x86_64-linux-gnu/perl/5.26.1/auto/ZMQ/LibZMQ3/LibZMQ3.so" value="1552347720000" />
       </map>
     </option>
