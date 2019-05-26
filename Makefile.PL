@@ -19,7 +19,9 @@ WriteMakefile(
     'Mojolicious'                        => '8.15',
     'Role::Tiny'                         => '2.000006',
     'Try::Tiny'                          => '0.30',
-    'Mojolicious::Plugin::OpenAPI'       => '2.14'
+    'Mojolicious::Plugin::OpenAPI'       => '2.14',
+    'Devel::Cover'                       => '1.33',
+    'Devel::Cover::Report::Codecov'      => '0.25'
   },
   TEST_REQUIRES => {
     'Test::More' => 0,
