@@ -34,3 +34,7 @@ $ cpanm --installdeps .
 ```
 $ scandeps.pl script/mojo_template
 ```
+
+## Travis + GitHub Releases
+https://docs.travis-ci.com/user/deployment/releases/
+ 

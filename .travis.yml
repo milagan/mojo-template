@@ -1,19 +1,28 @@
-
 language: perl
 perl:
-  - "5.26"
-  - "5.24"
-  - "5.18"
+- '5.26'
+- '5.24'
+- '5.18'
 env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y --no-install-recommends libsqlite3-dev
-  - cpanm --installdeps .
+- sudo apt-get update
+- sudo apt-get install -y --no-install-recommends libsqlite3-dev
+- cpanm --installdeps .
 script:
-  - perl Makefile.PL
-  - cover -test
+- perl Makefile.PL
+- cover -test
 after_success:
-  - cover -report codecov
-  - cover -report coveralls
-  - make manifest
-  - make dist
+- cover -report codecov
+- cover -report coveralls
+- make manifest
+- make dist
+deploy:
+  provider: releases
+  api_key:
+    secure: mPxyOkAs0KRkU99QB63O9TsUFFmxYLW2FV3Gb/zwQDPTSnNoOTrJ54OrSJx3OqNh3U2m0WlPY0pWLM3z5ivHK720JbImeAEow1rvxLLLs44Dm+eNQ5OQQ0dAIQ2M2f84wiwDUl63ACel7Hd+iVmNjwO0saw1Bfyygf7x3jtLGiN414Vso57COVH3RLjQorw4Vbqo9/TI7VGuiqN1OoOLhb0A+8r5NGIiWvwmrwqO+okUIgppYrsLvlb+UXkHFasf5MT/U12FEYkZ69ybvRkyCJSRyTby4lzvpA7e6A6lY2ZZciAnpMCZmBnPdVDDrviLDCdcFe4HMaaCIAYPEHHYTvJgkZut1MtlaQuR/pwIdLSJCpjDjQ8z+rMxoYq/weH3ttq58XaC4704YhonsnzS1qIwgbh+Br8CQ4Z5GMwxfI9m8HiJ8ELzXIMTWWrMt35v/5f83kBlvfI9nqMnKn+sVQ8iB3u6h/6NMwv5jQT8hYib7DRWUYBEijhiu/8O+/9SLHUZfmqkzQuEPN7vt9Uft1XMu5Bqfz8kHNV3NLwRdk+1anh2QQnkngLi4uVDuzpOnf0XGFPzolI8MdFW5VYku5RieXgTNE9W2IIzgfmhGpsGakdhrNSGO/kNShJPgpcK1PopJmWGeM7PN6/HUSNXEzy5RNe0pu7woZEG5JMKb/k=
+  file_glob: true
+  file: "/home/travis/build/milagan/mojo_template/*.tar.gz"
+  skip_cleanup: true
+  on:
+    repo: milagan/mojo_template
+    tags: true
