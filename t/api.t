@@ -6,6 +6,11 @@ use FindBin;
 use lib "$FindBin::Bin/../lib";
 
 my $t = Test::Mojo->new('MojoTemplate');
+
+$t->get_ok('/api'
+    => {Accept => 'application/json'})
+    ->status_is(200);
+
 $t->get_ok('/api/data')
     ->status_is(200)
     ->content_like(qr/"data":"sample"/i);

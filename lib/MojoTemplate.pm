@@ -4,7 +4,7 @@ use Mojo::Base 'Mojolicious';
 # This method will run once at server start
 sub startup {
   my $self = shift;
-  my $log = new Mojo::Log();
+  my $log = Mojo::Log->new();
 
   # Load configuration from hash returned by config file
   my $config = $self->plugin('Config');
@@ -26,9 +26,8 @@ sub startup {
   $r->get('/welcome')->to('example#welcome');
   $r->get('/hello')->to('example#hello');
 
-  $r->get('/api')->to('api#index');
-  # $r->get('/api/data')->to('data#get');
-  # $r->post('/api/data')->to('data#post');
+  $r->get('/api/data')->to('data#get');
+  $r->post('/api/data')->to('data#post');
   $r->put('/api/data')->to('data#put');
   $r->delete('/api/data/:id')->to('data#delete');
 }
