@@ -14,5 +14,6 @@ script:
   - cover -test
 after_success:
   - cover -report codecov
+  - cover -report coveralls
   - make manifest
   - make dist
