@@ -1,6 +1,9 @@
+name: perl
 component_depth: 3
-languages:
-  - perl
+production:
+  include:
+    - script/mojo_template
+    - lib/*.pm
 test:
   include:
     - t/*.t
