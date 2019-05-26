@@ -12,7 +12,7 @@ $t->get_ok('/api/data')
 
 $t->post_ok('/api/data')
     ->status_is(500)
-    ->content_like(qr/"data":"Missing or empty input/i);
+    ->content_like(qr/"data":/i);
 
 $t->post_ok('/api/data'
     => {Accept => 'application/json'}
@@ -22,7 +22,7 @@ $t->post_ok('/api/data'
 
 $t->put_ok('/api/data')
     ->status_is(500)
-    ->content_like(qr/"data":"Missing or empty input/i);
+    ->content_like(qr/"data":/i);
 
 $t->put_ok('/api/data'
     => {Accept => 'application/json'}
