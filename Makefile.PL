@@ -19,9 +19,11 @@ WriteMakefile(
     'Mojolicious'                        => '8.15',
     'Role::Tiny'                         => '2.000006',
     'Try::Tiny'                          => '0.30',
+    'Mojolicious::Plugin::OpenAPI'       => '2.14'
   },
   TEST_REQUIRES => {
     'Test::More' => 0,
-    'Test::Mojo' => 0
+    'Test::Mojo' => 0,
+    'Module::ScanDeps' => 0
   },
 );
