@@ -7,7 +7,7 @@ basePath: "/api"
 paths:
   /data:
     get:
-      operationId: getData
+      operationId: get
       x-mojo-to: "data#get"
       produces:
         - application/json
@@ -23,7 +23,7 @@ paths:
             items:
               $ref: '#/definitions/ErrorMessage'
     post:
-      operationId: postData
+      operationId: post
       x-mojo-to: "data#post"
       consumes:
         - application/json
@@ -37,6 +37,31 @@ paths:
       responses:
         200:
           description: successful post data response
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Data'
+        500:
+          description: exception
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/ErrorMessage'
+    put:
+      operationId: put
+      x-mojo-to: "data#put"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      responses:
+        200:
+          description: successful put data response
           schema:
             type: object
             items:
