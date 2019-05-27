@@ -6,7 +6,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
   NAME      => 'MojoTemplate',
   VERSION   => '0.01',
-  test      => {TESTS => 't/*.t'},
+  test      => {TESTS => 'test/*.t'},
   CONFIGURE_REQUIRES => {
     'ExtUtils::MakeMaker' => 6.64,
   },
