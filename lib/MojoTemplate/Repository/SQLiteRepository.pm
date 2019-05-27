@@ -80,4 +80,22 @@ sub get_record {
     return $data;
 }
 
+sub delete_record {
+    my ($self, $name) = @_;
+    my $ret = 0;
+
+    $self->{_app}->logger->debug(MODULE_NAME . ": (delete_record) $name");
+
+    try {
+        my $sql = qq(delete from test where name = ?;);
+        my $command = $self->{_db}->prepare($sql);
+        $command->execute($name);
+        $ret = 1;
+    } catch {
+        $self->{_app}->logger->error(MODULE_NAME . ": (delete_record) $_");
+    };
+
+    return $ret;
+}
+
 1;

@@ -44,17 +44,30 @@ sub test_get_record_failure {
     is($ret, undef, 'get_record should fail.');
 }
 
+sub test_delete_record {
+    my $ret = $repo->delete_record('sample');
+    is($ret, 1, 'delete_record should succeed.');
+}
+
+sub test_delete_failure {
+    my $ret = $repo->delete_record('sample');
+    is($ret, 0, 'delete_record should fail.');
+}
+
+
 $t->app->logger->info("***** Running SQLiteRepository.t *****");
 
 test_create_repository();
 test_create_repository_failure();
 test_add_record();
 test_get_record();
+test_delete_record();
 
 $repo->{_db} = undef;
 
 test_add_record_failure();
 test_get_record_failure();
+test_delete_failure();
 
 done_testing();
 

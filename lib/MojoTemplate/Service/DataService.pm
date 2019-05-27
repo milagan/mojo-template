@@ -60,4 +60,18 @@ sub get_record {
     return $data;
 }
 
+sub delete_record {
+    my ($self, $name) = @_;
+    my $ret = 0;
+
+    $self->{_app}->logger->debug(MODULE_NAME . ": (delete_record) $name");
+
+    try {
+        $ret = $self->{_app}->data_repo->delete_record($name);
+    } catch {
+        $self->{_app}->logger->error(MODULE_NAME . ": (delete_record) $_");
+    };
+
+    return $ret;
+}
 1;

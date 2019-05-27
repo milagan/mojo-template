@@ -95,7 +95,7 @@ sub setup_data_route {
   $r->get('/api/data')->to('data#get');
   $r->post('/api/data')->to('data#post');
   $r->put('/api/data')->to('data#put');
-  $r->delete('/api/data/:id')->to('data#delete');
+  $r->delete('/api/data/:name')->to('data#delete');
 }
 
 sub setup_services {

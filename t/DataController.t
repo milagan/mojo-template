@@ -17,6 +17,12 @@ sub test_data_get {
         ->content_like(qr/"data":/i);
 }
 
+sub test_data_get_failure {
+    $t->get_ok('/api/data')
+        ->status_is(500)
+        ->content_like(qr/"data":/i);
+}
+
 sub test_data_post {
     $t->post_ok('/api/data')
         ->status_is(500)
@@ -50,9 +56,15 @@ sub test_data_put {
 }
 
 sub test_data_delete {
-    $t->delete_ok('/api/data/1')
+    $t->delete_ok('/api/data/sample')
         ->status_is(200)
-        ->content_like(qr/"data":"1"/i);
+        ->content_like(qr/"data":"sample"/i);
+}
+
+sub test_data_delete_failure {
+    $t->delete_ok('/api/data/sample')
+        ->status_is(500)
+        ->content_like(qr/"data":/i);
 }
 
 $t->app->logger->info("***** Running DataController.t *****");
@@ -67,5 +79,13 @@ $t->app->helper(data_repo => sub {
 });
 
 test_data_post_failure();
+test_data_delete_failure();
+
+$t->app->helper(data_service => sub {
+    return undef;
+});
+
+test_data_get_failure();
+test_data_delete_failure();
 
 done_testing();

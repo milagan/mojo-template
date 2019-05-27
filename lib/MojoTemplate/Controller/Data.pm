@@ -9,13 +9,14 @@ use constant MODULE_NAME => qq(MojoTemplate::Controller::Data);
 sub get {
     my $self = shift;
 
-    $self->logger->debug(MODULE_NAME.": (get)");
+    $self->logger->debug(MODULE_NAME . ": (get)");
 
-    my $data = $self->data_service->get_record();
+    try {
+        my $data = $self->data_service->get_record();
 
-    if (defined($data)) {
         $self->render(json => { data => $data }, status => 200);
-    } else {
+    }
+    catch {
         $self->render(json => { data => "Failed to get record." }, status => 500);
     }
 }
@@ -23,7 +24,7 @@ sub get {
 sub post {
     my $self = shift;
 
-    $self->logger->debug(MODULE_NAME.": (post)");
+    $self->logger->debug(MODULE_NAME . ": (post)");
 
     put_post($self);
 }
@@ -31,7 +32,7 @@ sub post {
 sub put {
     my $self = shift;
 
-    $self->logger->debug(MODULE_NAME.": (put)");
+    $self->logger->debug(MODULE_NAME . ": (put)");
 
     put_post($self);
 }
@@ -39,10 +40,21 @@ sub put {
 sub delete {
     my $self = shift;
 
-    $self->logger->debug(MODULE_NAME.": (delete)");
+    $self->logger->debug(MODULE_NAME . ": (delete)");
 
-    my $id = $self->param('id');
-    $self->render(json => { data => $id }, status => 200);
+    try {
+        my $name = $self->param('name');
+        my $ret = $self->data_service->delete_record($name);
+        if ($ret == 1) {
+            $self->render(json => { data => $name }, status => 200);
+        }
+        else {
+            $self->render(json => { data => "Failed to delete record." }, status => 500);
+        }
+    }
+    catch {
+        $self->render(json => { data => $_ }, status => 500);
+    };
 }
 
 sub put_post {
@@ -53,7 +65,8 @@ sub put_post {
         my $ret = $self->data_service->add_record($json_data->{data});
         if ($ret == 1) {
             $self->render(json => { data => $json_data->{data} }, status => 200);
-        } else {
+        }
+        else {
             $self->render(json => { data => "Failed to add record." }, status => 500);
         }
     }
