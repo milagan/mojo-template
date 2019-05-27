@@ -62,4 +62,22 @@ sub add_record {
     return $ret;
 }
 
+sub get_record {
+    my ($self) = @_;
+    my $data = undef;
+
+    $self->{_app}->logger->debug(MODULE_NAME . ": (get_record)");
+    
+    try {
+        my $sql = qq(select * from test;);
+        my $command = $self->{_db}->prepare($sql);
+        $command->execute();
+        $data = $command->fetchall_arrayref({});
+    } catch {
+        $self->{_app}->logger->error(MODULE_NAME . ": (add_record) $_");
+    };
+
+    return $data;
+}
+
 1;

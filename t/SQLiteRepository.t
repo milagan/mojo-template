@@ -34,15 +34,27 @@ sub test_add_record_failure {
     is($ret, 0, 'add_record should fail.');
 }
 
+sub test_get_record {
+    my $ret = $repo->get_record();
+    isnt($ret, undef, 'get_record should succeed.');
+}
+
+sub test_get_record_failure {
+    my $ret = $repo->get_record();
+    is($ret, undef, 'get_record should fail.');
+}
+
 $t->app->logger->info("***** Running SQLiteRepository.t *****");
 
 test_create_repository();
 test_create_repository_failure();
 test_add_record();
+test_get_record();
 
 $repo->{_db} = undef;
 
 test_add_record_failure();
+test_get_record_failure();
 
 done_testing();
 

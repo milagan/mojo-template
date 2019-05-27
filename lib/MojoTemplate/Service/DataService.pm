@@ -38,12 +38,26 @@ sub add_record {
 
     try {
         $ret = $self->{_app}->data_repo->add_record($name);
-    }
-    catch {
+    } catch {
         $self->{_app}->logger->error(MODULE_NAME . ": (add_record) $_");
     };
 
     return $ret;
+}
+
+sub get_record {
+    my ($self,) = @_;
+    my $data = undef;
+
+    $self->{_app}->logger->debug(MODULE_NAME . ": (get_record)");
+
+    try {
+        $data = $self->{_app}->data_repo->get_record();
+    } catch {
+        $self->{_app}->logger->error(MODULE_NAME . ": (get_record) $_");
+    };
+
+    return $data;
 }
 
 1;

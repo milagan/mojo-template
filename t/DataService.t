@@ -31,16 +31,28 @@ sub test_add_record_failure {
     is($ret, 0, 'add_record should fail.');
 }
 
+sub test_get_record {
+    my $ret = $service->get_record();
+    isnt($ret, undef, 'get_record should succeed.');
+}
+
+sub test_get_record_failure {
+    my $ret = $service->get_record();
+    is($ret, undef, 'get_record should fail.');
+}
+
 $t->app->logger->info("***** Running DataService.t *****");
 
 test_create_service();
 test_add_record();
+test_get_record();
 
 $t->app->helper(data_repo => sub {
     return undef;
 });
 
 test_add_record_failure();
+test_get_record_failure();
 
 done_testing();
 

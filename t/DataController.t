@@ -14,7 +14,7 @@ sub test_data_get {
 
     $t->get_ok('/api/data')
         ->status_is(200)
-        ->content_like(qr/"data":"sample"/i);
+        ->content_like(qr/"data":/i);
 }
 
 sub test_data_post {

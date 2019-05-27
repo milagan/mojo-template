@@ -11,11 +11,19 @@ sub get {
 
     $self->logger->debug(MODULE_NAME.": (get)");
 
-    $self->render(json => { data => "sample" }, status => 200);
+    my $data = $self->data_service->get_record();
+
+    if (defined($data)) {
+        $self->render(json => { data => $data }, status => 200);
+    } else {
+        $self->render(json => { data => "Failed to get record." }, status => 500);
+    }
 }
 
 sub post {
     my $self = shift;
+
+    $self->logger->debug(MODULE_NAME.": (post)");
 
     put_post($self);
 }
@@ -23,11 +31,15 @@ sub post {
 sub put {
     my $self = shift;
 
+    $self->logger->debug(MODULE_NAME.": (put)");
+
     put_post($self);
 }
 
 sub delete {
     my $self = shift;
+
+    $self->logger->debug(MODULE_NAME.": (delete)");
 
     my $id = $self->param('id');
     $self->render(json => { data => $id }, status => 200);
