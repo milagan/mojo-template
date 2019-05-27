@@ -2,10 +2,10 @@ component_depth: 2
 languages:
   - perl
   - name: perl
-  production:
-    include:
-      - script/mojo_template
-      - lib/*.pm
-  test:
-    include:
-      - t/*.t
+    production:
+      include:
+        - script/mojo_template
+        - lib/*.pm
+    test:
+      include:
+        - t/*.t
