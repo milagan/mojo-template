@@ -1,3 +1,10 @@
 component_depth: 3
 languages:
   - perl
+  - name: perl
+    production:
+      include:
+        - .*/lib/.*\.pm
+    test:
+      include:
+        - .*/test/.*\.t
