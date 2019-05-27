@@ -7,7 +7,7 @@ basePath: "/api"
 paths:
   /data:
     get:
-      operationId: getData
+      operationId: get
       x-mojo-to: "data#get"
       produces:
         - application/json
@@ -23,7 +23,7 @@ paths:
             items:
               $ref: '#/definitions/ErrorMessage'
     post:
-      operationId: postData
+      operationId: post
       x-mojo-to: "data#post"
       consumes:
         - application/json
@@ -48,7 +48,7 @@ paths:
             items:
               $ref: '#/definitions/ErrorMessage'
     put:
-      operationId: putData
+      operationId: put
       x-mojo-to: "data#put"
       consumes:
         - application/json

@@ -2,6 +2,7 @@ package MojoTemplate::Repository::SQLiteRepository;
 use strict;
 use warnings FATAL => 'all';
 
+use Data::Dumper;
 use DBI;
 use Try::Tiny;
 
@@ -10,11 +11,13 @@ use constant MODULE_NAME => qq(MojoTemplate::Repository::SQLiteRepository);
 sub new {
     my ($class) = shift;
     my $self = {
-        _logger     => shift,
-        _db_uri     => shift
+        _app    => shift,
+        _db_uri => shift
     };
 
-    init($self);
+    if (!init($self)) {
+        return undef;
+    }
 
     bless $self, $class;
     return $self;
@@ -24,12 +27,19 @@ sub init {
     my ($self) = @_;
     my $ret = 0;
 
-    try {
-        $self->{_db} = DBI->connect($self->{_db_uri}, "", "",
+    $self->{_app}->logger->debug(MODULE_NAME.": (init)");
+
+    if (!-e $self->{_db_uri}) {
+        $self->{_app}->logger->error(MODULE_NAME.": (init) database file is missing");
+    } else {
+        my $db = "dbi:SQLite:dbname=".$self->{_db_uri};
+        $self->{_db} = DBI->connect($db, "", "",
             { RaiseError => 1, AutoCommit => 1, sqlite_unicode => 1 });
+    }
+
+    if (defined($self->{_db})) {
         $ret = 1;
-    } catch {
-    };
+    }
 
     return $ret;
 }
@@ -38,7 +48,7 @@ sub add_record {
     my ($self, $name) = @_;
     my $ret = 0;
 
-    $self->{_logger}->debug(MODULE_NAME.": (add_record) $name");
+    $self->{_app}->logger->debug(MODULE_NAME . ": (add_record) $name");
 
     try {
         my $sql = qq(insert into test (name) values (?););
@@ -46,7 +56,7 @@ sub add_record {
         $command->execute($name);
         $ret = 1;
     } catch {
-        $self->{_logger}->error(MODULE_NAME.": (add_record) $_");
+        $self->{_app}->logger->error(MODULE_NAME . ": (add_record) $_");
     };
 
     return $ret;

@@ -2,25 +2,26 @@
 use strict;
 use warnings;
 use Test::More;
-use Mojo::Log;
+use Test::Mojo;
 
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
 use MojoTemplate::Repository::SQLiteRepository;
 
+my $t = Test::Mojo->new('MojoTemplate');
 my $repo = undef;
-my $log = Mojo::Log->new();
 
-use constant TEST_DATABASE => qq(dbi:SQLite:dbname=./databases/data.db);
-
-sub test_create_database {
-    `sqlite3 databases/data.db < databases/data.sql`;
-}
+use constant TEST_DATABASE => qq(./databases/data.db);
 
 sub test_create_repository {
-    $repo = MojoTemplate::Repository::SQLiteRepository->new($log, TEST_DATABASE);
+    $repo = MojoTemplate::Repository::SQLiteRepository->new($t->app, TEST_DATABASE);
     isnt($repo, undef, 'SQLiteRepository successfully created.');
+}
+
+sub test_create_repository_failure {
+    my $temp_repo = MojoTemplate::Repository::SQLiteRepository->new($t->app, qq());
+    is($temp_repo, undef, 'SQLiteRepository creation should fail.');
 }
 
 sub test_add_record {
@@ -33,8 +34,10 @@ sub test_add_record_failure {
     is($ret, 0, 'add_record should fail.');
 }
 
-test_create_database();
+$t->app->logger->info("***** Running SQLiteRepository.t *****");
+
 test_create_repository();
+test_create_repository_failure();
 test_add_record();
 
 $repo->{_db} = undef;
