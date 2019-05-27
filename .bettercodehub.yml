@@ -9,4 +9,4 @@ languages:
         - Makefile.PL
     test:
       include:
-        - .*/test/.*\.pl
+        - .*/t/.*\.t

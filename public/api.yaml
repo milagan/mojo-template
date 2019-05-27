@@ -47,6 +47,31 @@ paths:
             type: object
             items:
               $ref: '#/definitions/ErrorMessage'
+    put:
+      operationId: putData
+      x-mojo-to: "data#put"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+      responses:
+        200:
+          description: successful put data response
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/Data'
+        500:
+          description: exception
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/ErrorMessage'
 definitions:
   ErrorMessage:
     type: object
