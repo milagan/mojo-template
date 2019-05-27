@@ -5,6 +5,8 @@ languages:
     production:
       include:
         - .*/lib/.*\.pm
+      exclude:
+        - Makefile.PL
     test:
       include:
         - .*/test/.*\.pl
