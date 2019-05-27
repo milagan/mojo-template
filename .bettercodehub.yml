@@ -7,4 +7,4 @@ languages:
         - .*/lib/.*\.pm
     test:
       include:
-        - .*/test/.*\.t
+        - .*/t/.*\.t
