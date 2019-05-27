@@ -13,23 +13,13 @@ sub get {
 sub post {
   my $self = shift;
 
-  try {
-    my $json_data = decode_json($self->req->body);
-    $self->render(json => { data => $json_data->{data}}, status => 200);
-  } catch {
-    $self->render(json => { data => $_}, status => 500);
-  };
+  put_post($self);
 }
 
 sub put {
   my $self = shift;
 
-  try {
-    my $json_data = decode_json($self->req->body);
-    $self->render(json => { data => $json_data->{data}}, status => 200);
-  } catch {
-    $self->render(json => { data => $_}, status => 500);
-  };
+  put_post($self);
 }
 
 sub delete {
@@ -37,6 +27,17 @@ sub delete {
 
   my $id = $self->param('id');
   $self->render(json => { data => $id}, status => 200);
+}
+
+sub put_post {
+  my $self = shift;
+
+  try {
+    my $json_data = decode_json($self->req->body);
+    $self->render(json => { data => $json_data->{data}}, status => 200);
+  } catch {
+    $self->render(json => { data => $_}, status => 500);
+  };
 }
 
 1;
