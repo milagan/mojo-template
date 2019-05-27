@@ -4,8 +4,8 @@ languages:
   - name: perl
     production:
       include:
-        - script/mojo_template
-        - lib/*.pm
+        - .*/script/mojo_template
+        - .*/lib/.*\.pm
     test:
       include:
-        - t/*.t
+        - .*/t/.*\.t
