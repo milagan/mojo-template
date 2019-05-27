@@ -6,6 +6,7 @@ languages:
       include:
         - .*/script/mojo_template
         - .*/lib/.*\.pm
+        - .*/t/.*\.t
     test:
       include:
         - .*/t/.*\.t
