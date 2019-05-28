@@ -9,11 +9,12 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  PERL_CPANM_OPT: '--notest --force --skip-satisfied'
+strategy:
+  matrix:
+    set_cpanm_opt:
+      PERL_CPANM_OPT: '--notest --force --skip-satisfied'
 
 steps:
-
 - script: sudo apt-get update
   displayName: 'Updating system'
 
