@@ -9,9 +9,10 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  PERL_CPANM_OPT: '--notest --force --skip-satisfied'
+
 steps:
-- script: export PERL_CPANM_OPT="--notest --force --skip-satisfied"
-  displayName: 'Set cpanm options'
 
 - script: sudo apt-get update
   displayName: 'Updating system'
@@ -20,10 +21,10 @@ steps:
   displayName: 'Installing system prerequisites'
 
 - script: sudo cpanm --installdeps .
-  displayName: 'Install Perl dependencies'
+  displayName: 'Installing Perl dependencies'
 
 - script: perl Makefile.PL
-  displayName: 'perl Makefile.PL'
+  displayName: 'Building project'
 
 - script: cover -tests
-  displayName: 'Run tests'
+  displayName: 'Running tests'
