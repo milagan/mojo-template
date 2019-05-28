@@ -5,6 +5,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/milagan/mojo_template/badge.svg?branch=master)](https://coveralls.io/github/milagan/mojo_template?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/milagan/mojo_template/badge)](https://www.codefactor.io/repository/github/milagan/mojo_template)
 [![BCH compliance](https://bettercodehub.com/edge/badge/milagan/mojo_template?branch=master)](https://bettercodehub.com/)
+[![Build Status](https://ilaganm.visualstudio.com/mojo_template/_apis/build/status/milagan.mojo_template?branchName=master)](https://ilaganm.visualstudio.com/mojo_template/_build/latest?definitionId=3&branchName=master)
+
 ## Create Project
 ```
 $ mojo generate app
