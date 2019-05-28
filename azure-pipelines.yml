@@ -15,6 +15,9 @@ strategy:
       PERL_CPANM_OPT: '--notest --force --skip-satisfied'
 
 steps:
+- script: echo $PERL_CPANM_OPT
+  displayName: 'Show environment variable values'
+
 - script: sudo apt-get update
   displayName: 'Updating system'
 
@@ -24,8 +27,8 @@ steps:
 - script: sudo cpanm --installdeps .
   displayName: 'Installing Perl dependencies'
 
-- script: perl Makefile.PL
+- script: sudo perl Makefile.PL
   displayName: 'Building project'
 
-- script: cover -tests
+- script: sudo cover -tests
   displayName: 'Running tests'
