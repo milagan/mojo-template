@@ -14,7 +14,7 @@ steps:
 - script: sudo apt-get update
   displayName: 'Updating system'
 
-- script: sudo apt-get install -y --no-install-recommends libsqlite3-dev cpanminus
+- script: sudo apt-get install -y --no-install-recommends libsqlite3-dev cpanminus sqlite3
   displayName: 'Installing system prerequisites'
 
 - script: sudo cpanm --installdeps .
