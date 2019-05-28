@@ -9,10 +9,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-strategy:
-  matrix:
-    set_cpanm_opt:
-      PERL_CPANM_OPT: '--notest --force --skip-satisfied'
+variables:
+    PERL_CPANM_OPT: '--notest --force --skip-satisfied'
 
 steps:
 - script: echo $PERL_CPANM_OPT
