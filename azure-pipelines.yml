@@ -10,10 +10,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: export PERL_CPANM_OPT="--notest --force --skip-satisfied"
+  displayName: 'Set CPANM options'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: sudo apt-get update
+  displayName: 'Updating system'
+
+- script: sudo apt-get install -y --no-install-recommends libsqlite3-dev
+  displayName: 'Installing system prerequisites'
+
+- script: cpanm --installdeps .
+  displayName: 'Install Perl dependencies'
+
+- script: perl Makefile.PL
+  displayName: 'perl Makefile.PL'
+
+- script: cover -tests
+  displayName: 'Run tests'
