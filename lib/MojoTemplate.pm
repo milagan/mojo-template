@@ -1,5 +1,6 @@
 package MojoTemplate;
 use Mojo::Base 'Mojolicious';
+use Mojo::EventEmitter;
 
 use MojoTemplate::Repository::SQLiteRepository;
 use MojoTemplate::Service::DataService;
@@ -42,6 +43,10 @@ sub setup_helpers {
     $self->logger->debug(MODULE_NAME.": helper (data_repo)");
     return $self->{_sqlite_repo};
   });
+
+  $self->helper(events => sub {
+    state $events = Mojo::EventEmitter->new
+  });
 }
 
 sub setup_databases {
@@ -69,6 +74,9 @@ sub setup_plugins {
 
   # OpenAPI support
   $self->plugin(OpenAPI => {spec => $self->static->file("api.yaml")->path});
+
+  # Mojolicious Status support
+  $self->plugin('Status');
 }
 
 sub setup_routes {
@@ -87,6 +95,11 @@ sub setup_example_route {
   $r->get('/')->to('example#welcome');
   $r->get('/welcome')->to('example#welcome');
   $r->get('/hello')->to('example#hello');
+  $r->get('/slow')->to('example#slow');
+  $r->get('/sub_process')->to('example#sub_process');
+  $r->websocket('channel')->to('example#channel');
+  $r->get('/chat')->to('example#chat');
+
 }
 
 sub setup_data_route {
