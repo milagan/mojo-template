@@ -21,7 +21,8 @@ WriteMakefile(
         'Try::Tiny'                    => '0.30',
         'Mojolicious::Plugin::OpenAPI' => '2.14',
         'DBI'                          => '1.642',
-        'DBD::SQLite'                  => '1.62'
+        'DBD::SQLite'                  => '1.62',
+        'Mojolicious::Plugin::Status'  => '1.0'
     },
     TEST_REQUIRES      => {
         'Test::More'                      => 0,

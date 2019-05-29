@@ -25,10 +25,34 @@ sub test_hello {
         ->content_like(qr/Hello to the Mojolicious real-time web framework!/i);
 }
 
+sub test_slow {
+    $t->get_ok('/slow?delay=1')
+        ->status_is(302);
+}
+
+sub test_sub_process {
+    $t->get_ok('/sub_process?delay=1')
+        ->status_is(302);
+}
+
+sub test_chat {
+    $t->get_ok('/chat')
+        ->status_is(200);
+}
+
+sub test_channel {
+    $t->websocket_ok('/channel')
+        ->status_is(101);
+}
+
 $t->app->logger->info("***** Running ExampleController.t *****");
 
 test_default();
 test_welcome();
 test_hello();
+test_slow();
+test_sub_process();
+test_chat();
+test_channel();
 
 done_testing();
