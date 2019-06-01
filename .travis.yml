@@ -1,12 +1,11 @@
+sudo: required
 language: perl
-perl:
-- '5.26'
-- '5.24'
-- '5.18'
+perl: 5.26-shrplib
 env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
 - sudo apt-get update
 - sudo apt-get install -y --no-install-recommends libsqlite3-dev
+- nvm install 8.16.0 && nvm alias default v8.16.0
 - cpanm --installdeps .
 script:
 - perl Makefile.PL
@@ -16,6 +15,8 @@ after_success:
 - cover -report coveralls
 - make manifest
 - make dist
+- npm install
+- npm run snapshots
 deploy:
   provider: releases
   api_key:

@@ -8,6 +8,7 @@
 [![Build Status](https://ilaganm.visualstudio.com/mojo_template/_apis/build/status/milagan.mojo_template?branchName=master)](https://ilaganm.visualstudio.com/mojo_template/_build/latest?definitionId=3&branchName=master)
 [![Docker Layers](https://images.microbadger.com/badges/image/milagan77/mojo_template.svg)](https://microbadger.com/images/milagan77/mojo_template)
 [![Docker Version](https://images.microbadger.com/badges/version/milagan77/mojo_template.svg)](https://microbadger.com/images/milagan77/mojo_template)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/milagan/mojo_template)
 ## Create Project
 ```
 $ mojo generate app
