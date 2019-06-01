@@ -5,7 +5,7 @@ env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
 - sudo apt-get update
 - sudo apt-get install -y --no-install-recommends libsqlite3-dev
-- sudo apt-get purge --auto-remove nodejs
+- sudo apt-get purge --auto-remove nodejs node
 - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 - sudo apt-get install -y --no-install-recommends nodejs
 - node --version
