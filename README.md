@@ -51,3 +51,9 @@ $ docker build -t milagan77/mojo_template .
 ```
 $ docker run -p 8080:8080 milagan77/mojo_template
 ```
+
+## Running Percy Snapshots
+```
+$ export PERCY_TOKEN=???
+$ npm run snapshots
+```
