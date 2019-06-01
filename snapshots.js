@@ -10,5 +10,8 @@ PercyScript.run(async (page, percySnapshot) => {
 
   await page.goto('http://localhost:8080/hello');
   await percySnapshot('mojo_template hello page');
+
+  await page.goto('http://localhost:8080/index.html');
+  await percySnapshot('mojo_template index.html page');
 });
 
