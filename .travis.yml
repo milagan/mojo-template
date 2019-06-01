@@ -7,7 +7,9 @@ before_install:
 - sudo apt-get install -y --no-install-recommends libsqlite3-dev
 - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 - sudo apt-get install -y --no-install-recommends nodejs
+- which node
 - node --version
+- nodejs --version
 - cpanm --installdeps .
 script:
 - perl Makefile.PL
