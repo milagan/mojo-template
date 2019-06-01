@@ -5,8 +5,7 @@ env: PERL_CPANM_OPT="--notest --force --skip-satisfied"
 before_install:
 - sudo apt-get update
 - sudo apt-get install -y --no-install-recommends libsqlite3-dev
-- curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-- sudo apt-get install -y --no-install-recommends nodejs
+- nvm alias default v8.16.0
 - which node
 - node --version
 - nodejs --version
