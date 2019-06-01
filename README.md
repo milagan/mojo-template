@@ -6,7 +6,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/milagan/mojo_template/badge)](https://www.codefactor.io/repository/github/milagan/mojo_template)
 [![BCH compliance](https://bettercodehub.com/edge/badge/milagan/mojo_template?branch=master)](https://bettercodehub.com/)
 [![Build Status](https://ilaganm.visualstudio.com/mojo_template/_apis/build/status/milagan.mojo_template?branchName=master)](https://ilaganm.visualstudio.com/mojo_template/_build/latest?definitionId=3&branchName=master)
-
+[![Docker Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=milagan77&repository=mojo_template)](https://cloud.docker.com/repository/docker/milagan77/mojo_template)
 ## Create Project
 ```
 $ mojo generate app
@@ -39,4 +39,13 @@ $ scandeps.pl script/mojo_template
 
 ## Travis + GitHub Releases
 https://docs.travis-ci.com/user/deployment/releases/
- 
+
+## Building Docker Image
+```
+$ docker build -t milagan77/mojo_template .
+```
+
+## Running via Docker
+```
+$ docker run -p 8080:8080 milagan77/mojo_template
+```
