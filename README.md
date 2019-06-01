@@ -39,4 +39,13 @@ $ scandeps.pl script/mojo_template
 
 ## Travis + GitHub Releases
 https://docs.travis-ci.com/user/deployment/releases/
- 
+
+## Building Docker Image
+```
+$ docker build -t milagan77/mojo_template .
+```
+
+## Running via Docker
+```
+$ docker run -p 8080:8080 milagan77/mojo_template
+```
