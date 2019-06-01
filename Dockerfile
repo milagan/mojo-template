@@ -1,4 +1,4 @@
-FROM perl:latest
+FROM perl:5.26-threaded
 
 ENV PERL_CPANM_OPT="--notest --force --skip-satisfied"
 
