@@ -105,7 +105,6 @@ _Deparsed_XSubs.pm
 MANIFEST
 data.db
 mojo_template.log
-mojo_template.conf
 
 # Dependencies
 /node_modules
