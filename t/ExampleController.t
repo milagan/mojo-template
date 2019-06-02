@@ -45,6 +45,17 @@ sub test_channel {
         ->status_is(101);
 }
 
+sub test_sentry_error {
+    $t->get_ok('/sentry/error')
+        ->status_is(200);
+}
+
+sub test_sentry_message {
+    $t->get_ok('/sentry/message')
+        ->status_is(200);
+}
+
+
 $t->app->logger->info("***** Running ExampleController.t *****");
 
 test_default();
@@ -54,5 +65,7 @@ test_slow();
 test_sub_process();
 test_chat();
 test_channel();
+test_sentry_error();
+test_sentry_message();
 
 done_testing();
