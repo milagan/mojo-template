@@ -22,7 +22,8 @@ WriteMakefile(
         'Mojolicious::Plugin::OpenAPI' => '2.14',
         'DBI'                          => '1.642',
         'DBD::SQLite'                  => '1.62',
-        'Mojolicious::Plugin::Status'  => '1.0'
+        'Mojolicious::Plugin::Status'  => '1.0',
+        'Sentry::Raven'                => '1.10'
     },
     TEST_REQUIRES      => {
         'Test::More'                      => 0,

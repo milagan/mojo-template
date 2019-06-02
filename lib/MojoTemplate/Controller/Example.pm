@@ -1,6 +1,7 @@
 package MojoTemplate::Controller::Example;
 use Mojo::Base 'Mojolicious::Controller';
 use Mojo::IOLoop;
+use Sentry::Raven;
 
 # This action will render a template
 sub welcome {
@@ -57,6 +58,23 @@ sub channel {
   # Forward messages to the browser
   my $cb = $self->events->on(mojochat => sub { $self->send(pop) });
   $self->on(finish => sub { shift->events->unsubscribe(mojochat => $cb) });
+}
+
+sub sentry_error {
+  my $self = shift;
+
+  $self->raven->capture_errors(sub {
+    my $value = 1 / 0;
+  });
+
+  $self->render(json => { data => "OK" }, status => 200);
+}
+
+sub sentry_message {
+  my $self = shift;
+  
+  $self->raven->capture_message('The sky is falling');
+  $self->render(json => { data => "OK" }, status => 200);
 }
 
 1;
