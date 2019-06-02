@@ -1,3 +1,4 @@
+[![Board Status](https://ilaganm.visualstudio.com/7d906663-7767-48ea-9119-acae02e8fae9/284ae090-cf32-4a3c-93ff-dbd45f97e62e/_apis/work/boardbadge/7437db08-c26d-4111-bc6d-dbfdf03ed8e2)](https://ilaganm.visualstudio.com/7d906663-7767-48ea-9119-acae02e8fae9/_boards/board/t/284ae090-cf32-4a3c-93ff-dbd45f97e62e/Microsoft.RequirementCategory)
 # mojo_template
 
 [![Build Status](https://travis-ci.com/milagan/mojo_template.svg?branch=master)](https://travis-ci.com/milagan/mojo_template)
