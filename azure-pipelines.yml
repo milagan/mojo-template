@@ -29,4 +29,6 @@ steps:
   displayName: 'Building project'
 
 - script: sudo cover -test
+  env:
+    SENTRY_DSN: $(SENTRY_DSN)
   displayName: 'Running tests'
