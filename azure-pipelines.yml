@@ -12,6 +12,9 @@ steps:
 - script: echo $PERL_CPANM_OPT
   displayName: 'Show environment variable values'
 
+- script: echo $SENTRY_DSN
+  displayName: 'Show environment variable values'
+
 - script: sudo apt-get update
   displayName: 'Updating system'
 
