@@ -6,8 +6,6 @@ pool:
 
 variables:
 - group: my-secrets-group
-- name: PERL_CPANM_OPT
-  value: '--notest --force --skip-satisfied'
 
 steps:
 - script: sudo apt-get update
@@ -24,5 +22,7 @@ steps:
 - script: sudo perl Makefile.PL
   displayName: 'Building project'
 
-- script: sudo env SENTRY_DSN='https://ee5a7463881f4e6493a25c36b506404f:4ebc213840be467fa42e8931fe420149@sentry.io/1472952' cover -test
+- script: |
+    sudo echo $(SENTRY_DSN)
+    sudo env SENTRY_DSN='https://ee5a7463881f4e6493a25c36b506404f:4ebc213840be467fa42e8931fe420149@sentry.io/1472952' cover -test
   displayName: 'Running tests'
