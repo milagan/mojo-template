@@ -5,24 +5,24 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  PERL_CPANM_OPT: '--notest --force --skip-satisfied'
-  SENTRY_DSN:  'https://ee5a7463881f4e6493a25c36b506404f:4ebc213840be467fa42e8931fe420149@sentry.io/1472952'
+- group: my-secrets-group
 
 steps:
-- script: echo $PERL_CPANM_OPT
-  displayName: 'Show environment variable values'
-
 - script: sudo apt-get update
   displayName: 'Updating system'
 
 - script: sudo apt-get install -y --no-install-recommends libsqlite3-dev cpanminus sqlite3
   displayName: 'Installing system prerequisites'
 
-- script: sudo cpanm --installdeps .
+- script: |
+    sudo echo $(PERL_CPANM_OPT)
+    sudo env PERL_CPANM_OPT='--notest --force --skip-satisfied' cpanm --installdeps .
   displayName: 'Installing Perl dependencies'
 
 - script: sudo perl Makefile.PL
   displayName: 'Building project'
 
-- script: sudo cover -test
+- script: |
+    sudo echo $(SENTRY_DSN)
+    sudo env SENTRY_DSN=$(SENTRY_DSN) cover -test
   displayName: 'Running tests'
