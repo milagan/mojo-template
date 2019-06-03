@@ -10,12 +10,6 @@ variables:
   value: '--notest --force --skip-satisfied'
 
 steps:
-- script: echo $PERL_CPANM_OPT
-  displayName: 'Show CPANM environment variable values'
-
-- script: echo $SENTRY_DSN
-  displayName: 'Show SENTRY_DSN environment variable values'
-
 - script: sudo apt-get update
   displayName: 'Updating system'
 
@@ -23,6 +17,8 @@ steps:
   displayName: 'Installing system prerequisites'
 
 - script: sudo cpanm --installdeps .
+  env:
+    PERL_CPANM_OPT: $(PERL_CPANM_OPT)
   displayName: 'Installing Perl dependencies'
 
 - script: sudo perl Makefile.PL
