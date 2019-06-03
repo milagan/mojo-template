@@ -17,8 +17,8 @@ steps:
   displayName: 'Installing system prerequisites'
 
 - script: |
-  sudo echo $(PERL_CPANM_OPT)
-  sudo env PERL_CPANM_OPT='--notest --force --skip-satisfied' cpanm --installdeps .
+    sudo echo $(PERL_CPANM_OPT)
+    sudo env PERL_CPANM_OPT='--notest --force --skip-satisfied' cpanm --installdeps .
   displayName: 'Installing Perl dependencies'
 
 - script: sudo perl Makefile.PL
