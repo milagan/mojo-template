@@ -6,6 +6,7 @@ pool:
 
 variables:
   PERL_CPANM_OPT: '--notest --force --skip-satisfied'
+  SENTRY_DSN:  'https://ee5a7463881f4e6493a25c36b506404f:4ebc213840be467fa42e8931fe420149@sentry.io/1472952'
 
 steps:
 - script: echo $PERL_CPANM_OPT
