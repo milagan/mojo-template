@@ -16,15 +16,13 @@ steps:
 - script: sudo apt-get install -y --no-install-recommends libsqlite3-dev cpanminus sqlite3
   displayName: 'Installing system prerequisites'
 
-- script: sudo cpanm --installdeps .
-  env:
-    PERL_CPANM_OPT: $(PERL_CPANM_OPT)
+- script: |
+  sudo echo $(PERL_CPANM_OPT)
+  sudo env PERL_CPANM_OPT='--notest --force --skip-satisfied' cpanm --installdeps .
   displayName: 'Installing Perl dependencies'
 
 - script: sudo perl Makefile.PL
   displayName: 'Building project'
 
-- script: sudo cover -test
-  env:
-    SENTRY_DSN: $(SENTRY_DSN)
+- script: sudo env SENTRY_DSN='https://ee5a7463881f4e6493a25c36b506404f:4ebc213840be467fa42e8931fe420149@sentry.io/1472952' cover -test
   displayName: 'Running tests'
