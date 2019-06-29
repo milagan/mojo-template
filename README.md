@@ -58,3 +58,5 @@ $ docker run -p 8080:8080 milagan77/mojo_template
 $ export PERCY_TOKEN=???
 $ npm run snapshots
 ```
+
+## Testing Hound
