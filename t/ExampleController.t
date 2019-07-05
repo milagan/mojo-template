@@ -55,6 +55,15 @@ sub test_sentry_message {
         ->status_is(200);
 }
 
+sub test_poke_mojo {
+    $t->get_ok('/poke_mojo')
+        ->status_is(200);
+}
+
+sub test_perform_jobs {
+    $t->get_ok('/perform_jobs')
+        ->status_is(200);
+}
 
 $t->app->logger->info("***** Running ExampleController.t *****");
 
@@ -67,5 +76,7 @@ test_chat();
 test_channel();
 test_sentry_error();
 test_sentry_message();
+test_poke_mojo();
+test_perform_jobs();
 
 done_testing();
