@@ -109,3 +109,4 @@ mojo_template.conf
 
 # Dependencies
 /node_modules
+.vstags

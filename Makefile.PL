@@ -23,7 +23,8 @@ WriteMakefile(
         'DBI'                          => '1.642',
         'DBD::SQLite'                  => '1.62',
         'Mojolicious::Plugin::Status'  => '1.0',
-        'Sentry::Raven'                => '1.10'
+        'Sentry::Raven'                => '1.10',
+        'inc::Module::Install'         => '1.19'
     },
     TEST_REQUIRES      => {
         'Test::More'                      => 0,
