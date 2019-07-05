@@ -24,7 +24,8 @@ WriteMakefile(
         'DBD::SQLite'                  => '1.62',
         'Mojolicious::Plugin::Status'  => '1.0',
         'Sentry::Raven'                => '1.10',
-        'inc::Module::Install'         => '1.19'
+        'inc::Module::Install'         => '1.19',
+        'Mojolicious::Plugin::Minion'  => '9.10'
     },
     TEST_REQUIRES      => {
         'Test::More'                      => 0,
