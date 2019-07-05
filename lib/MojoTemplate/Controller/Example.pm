@@ -77,4 +77,18 @@ sub sentry_message {
   $self->render(json => { data => "OK" }, status => 200);
 }
 
+sub poke_mojo {
+  my $self = shift;
+
+  $self->minion->enqueue('poke_mojo');
+  $self->render(json => { data => "OK" }, status => 200);
+}
+
+sub perform_jobs {
+    my $self = shift;
+
+    $self->minion->perform_jobs();
+    $self->render(json => { data => "OK" }, status => 200);
+}
+
 1;
