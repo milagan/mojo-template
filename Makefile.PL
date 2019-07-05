@@ -25,7 +25,7 @@ WriteMakefile(
         'Mojolicious::Plugin::Status'        => '1.0',
         'Sentry::Raven'                      => '1.10',
         'inc::Module::Install'               => '1.19',
-        'Mojolicious::Plugin::Minion'        => '9.10',
+        'Mojolicious::Plugin::Minion'        => 0,
         'Minion::Backend::SQLite'            => '4.003',
         'Mojolicious::Plugin::Minion::Admin' => 0
     },
