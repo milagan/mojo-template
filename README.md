@@ -60,3 +60,8 @@ $ npm run snapshots
 ```
 
 ## Testing Hound
+
+## GPG on WSL
+```
+export GPG_TTY=$(tty)
+```
