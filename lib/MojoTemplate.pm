@@ -2,6 +2,7 @@ package MojoTemplate;
 use Mojo::Base 'Mojolicious';
 use Mojo::EventEmitter;
 use Sentry::Raven;
+use Minion::Backend::SQLite;
 
 use MojoTemplate::Repository::SQLiteRepository;
 use MojoTemplate::Service::DataService;
@@ -86,6 +87,9 @@ sub setup_plugins {
   # Sentry Raven support
   my $sentry_dsn = $ENV{"SENTRY_DSN"} ? $ENV{"SENTRY_DSN"} : $config->{sentry_dsn};
   $self->{_raven} = Sentry::Raven->new(sentry_dsn => $sentry_dsn);
+
+  # Minion support
+  $self->plugin('Minion' => { SQLite => 'sqlite:./databases/minion.db' });
 }
 
 sub setup_routes {
