@@ -40,6 +40,14 @@ $ cpanm --installdeps .
 $ scandeps.pl script/mojo_template
 ```
 
+## Virtualenv
+```
+$ ./virtualenv.pl venv
+$ source venv/bin/activate
+(venv) $ cpanm -L venv/ --installdeps --notest .
+(venv) $ deactivate
+```
+
 ## Travis + GitHub Releases
 https://docs.travis-ci.com/user/deployment/releases/
 

@@ -21,6 +21,8 @@ _build/
 Build
 Build.bat
 
+
+
 # Module::Install
 inc/
 
@@ -110,3 +112,4 @@ mojo_template.conf
 # Dependencies
 /node_modules
 .vstags
+/venv
