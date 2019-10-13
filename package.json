@@ -1,12 +1,12 @@
 {
-    "private": true,
-    "scripts": {
-      "start": "script/mojo_template daemon -l http://*:8080",
-      "presnapshots": "script/mojo_template daemon -l http://*:8080 &",
-      "snapshots": "percy exec -- node snapshots.js",
-      "postsnapshots": "pkill -f 'perl script/mojo_template'"
-    },
-    "devDependencies": {
-      "@percy/script": "^1.0.0"
-    }
+  "private": true,
+  "scripts": {
+    "start": "script/mojo_template daemon -l http://*:8080",
+    "presnapshots": "script/mojo_template daemon -l http://*:8080 &",
+    "snapshots": "percy exec -- node snapshots.js",
+    "postsnapshots": "pkill -f 'perl script/mojo_template'"
+  },
+  "devDependencies": {
+    "@percy/script": "^1.0.0"
   }
+}
